@@ -35,7 +35,8 @@ function Rules() {
         Time).
       </p>
       <p className="mb-6">
-        Prize Awarded: Before Oct 31, 2023 (11:59 pm Eastern Time).
+        Prize Awarded: Within 60 days of obtaining all necessary paperwork of
+        winners.
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold mb-4">
@@ -124,11 +125,13 @@ function Rules() {
         7. Project Requirements
       </h2>
       <p>
-        Entrants must create a functioning web application utilizing the Convex
-        for your api, datastore, and file storage. Submitting a project without
-        using Convex will result in a disqualification. You{"'"}re welcome to
-        use any type of programming language or framework of your choice as long
-        as it works with Convex and their provided SDKs.
+        Entrants must create a functioning web application utilizing Convex.
+        Your application MUST at least use Convex&apos;s queries, mutations, and
+        database. Convex has other features (such as file storage) which are not
+        required for this hackathon submission, but failure to use the specified
+        features of Convex will result in a disqualification. You can use any
+        programming languages or framework you want as long as it integrates
+        with Convex, and authentication / authorization is optional.
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold mb-4">
