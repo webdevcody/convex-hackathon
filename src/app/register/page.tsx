@@ -6,7 +6,7 @@ import { api } from "../../../convex/_generated/api";
 
 function Rules() {
   return (
-    <div className="container mx-auto py-12 text-white">
+    <div>
       <p className="mb-6">
         NO PURCHASE OR PAYMENT NECESSARY TO ENTER OR WIN. A PURCHASE OR PAYMENT
         WILL NOT INCREASE YOUR CHANCES OF WINNING.
@@ -38,20 +38,20 @@ function Rules() {
         Prize Awarded: Before Oct 31, 2023 (11:59 pm Eastern Time).
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
         2. Administrator & Prize Distributor
       </h2>
       <p className="mb-6">
         Administrator & Prize Distributor: Cody from WebDevCody Youtube Channel
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">3. Sponsor</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">3. Sponsor</h2>
       <p className="mb-6">
         Sponsor: Convex, Inc.{" "}
         <a href="https://www.convex.dev/">(https://www.convex.dev/)</a>
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">4. Eligibility</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">4. Eligibility</h2>
       <p className="mb-6">The Hackathon IS open to:</p>
       <ul className="list-disc pl-6 mb-6">
         <li>
@@ -96,7 +96,9 @@ function Rules() {
         </li>
       </ul>
 
-      <h2 className="text-2xl font-semibold mb-4">5. PRIZE ELIGIBILITY</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
+        5. Prize Eligibility
+      </h2>
       <p>
         Prizes will ONLY be paid out using PayPal. If Entrant can{"'"}t accept
         PayPal for prizes, then their prize will be passed along to the next
@@ -106,7 +108,7 @@ function Rules() {
         award, but the cash prize will be given to the next eligable winner.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">6. How to Enter</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">6. How to Enter</h2>
 
       <p>
         Please sign in at{" "}
@@ -118,7 +120,9 @@ function Rules() {
         the register button
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">7. Project Requirements</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
+        7. Project Requirements
+      </h2>
       <p>
         Entrants must create a functioning web application utilizing the Convex
         for your api, datastore, and file storage. Submitting a project without
@@ -127,7 +131,7 @@ function Rules() {
         as it works with Convex and their provided SDKs.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
         8. Submission Requirements
       </h2>
 
@@ -164,7 +168,7 @@ function Rules() {
         verify that its work is authentic and does not infringe any IP rights.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
         9. Intellectual Property Rights
       </h2>
       <p>
@@ -191,7 +195,7 @@ function Rules() {
         to help promote the Sponsor and this Hackathon.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
         10. Prize Stipulations and Financial Responsibilities
       </h2>
 
@@ -249,7 +253,7 @@ function Rules() {
         laws of the United States or other sponsor jurisdiction, or those of a
         winner’s jurisdiction.
       </p>
-      <h2 className="text-2xl font-semibold mb-4">
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
         11. Entry Conditions and Release
       </h2>
       <p className="mb-4">
@@ -329,7 +333,8 @@ function Rules() {
         or should have known there was a problem and will be determined at the
         sole discretion of the Sponsor.
       </p>
-      <h2 className="text-2xl font-semibold mb-4">12. Publicity</h2>
+
+      <h2 className="mt-12 text-2xl font-semibold mb-4">12. Publicity</h2>
       <p>
         By participating in the Hackathon, Entrant consents to the promotion and
         display of the Entrant’s Submission, and to the use of the personal data
@@ -341,7 +346,8 @@ function Rules() {
         administrator and third parties involved shall process the personal data
         in accordance with the EU General Data Protection Regulation.
       </p>
-      <h2 className="text-2xl font-semibold mb-4">
+
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
         13. Limitations of Liability.
       </h2>
       <p>
@@ -354,7 +360,7 @@ function Rules() {
         where such limitation is not legal.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">14. Disputes</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">14. Disputes</h2>
       <p className="mb-4">
         Except where prohibited by law, as a condition of participating in this
         Hackathon, Entrant agrees that:
@@ -397,7 +403,9 @@ function Rules() {
         LIMITATIONS OF LIABILITY MAY NOT APPLY TO YOU.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">15. General Conditions</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
+        15. General Conditions
+      </h2>
 
       <ul className="list-disc pl-6 mb-6">
         <li className="mb-4">
@@ -477,53 +485,73 @@ function Rules() {
 }
 
 export default function Register() {
-  const [agreed, setAgreed] = useState(false);
+  const [isAcceptedRules, setIsAcceptRules] = useState(false);
+  const [isUnderstandPrizeEligibility, setIsUnderstandPrizeEligibility] =
+    useState(false);
   const register = useMutation(api.participants.register);
   const registrationInfo = useQuery(api.participants.getRegistrationInfo);
 
-  const handleAgreeChange = () => {
-    setAgreed(!agreed);
-  };
-
   useEffect(() => {
     if (registrationInfo) {
-      setAgreed(registrationInfo.agreedToRules);
+      setIsAcceptRules(registrationInfo.isAcceptedRules);
+      setIsUnderstandPrizeEligibility(
+        registrationInfo.isUnderstandPrizeEligibility
+      );
     }
   }, [registrationInfo]);
 
   return (
     <div className="container mx-auto p-6 flex flex-col text-white">
       <h1 className="text-4xl font-bold mb-4 mt-8">Hackathon Registration</h1>
-      <p>
+      <p className="mb-4">
         You must read and agree to the following hackathon Rules before
         registration:
       </p>
 
       <Rules />
 
-      <form
-        className="mb-24"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          await register();
-        }}
-      >
-        <label className="flex items-center mb-4">
-          <input
-            type="checkbox"
-            className="mr-2"
-            checked={agreed}
-            onChange={handleAgreeChange}
-          />
-          I agree to the rules
-        </label>
-        <button
-          className={`btn-primary disabled:opacity-50 disabled:pointer-events-none`}
-          disabled={!agreed}
+      {registrationInfo ? (
+        <div className="mb-12 mt-12 text-3xl">
+          Thank you for registering, we&apos;re looking forward to seeing your
+          submission
+        </div>
+      ) : (
+        <form
+          className="mb-24"
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await register();
+          }}
         >
-          Register
-        </button>
-      </form>
+          <label className="flex items-center mb-4">
+            <input
+              type="checkbox"
+              className="mr-2"
+              checked={isAcceptedRules}
+              onChange={() => setIsAcceptRules(!isAcceptedRules)}
+            />
+            I agree to the rules
+          </label>
+          <label className="flex items-center mb-4">
+            <input
+              type="checkbox"
+              className="mr-2"
+              checked={isUnderstandPrizeEligibility}
+              onChange={() =>
+                setIsUnderstandPrizeEligibility(!isUnderstandPrizeEligibility)
+              }
+            />
+            I understand that prizes will only be paid out via PayPal
+          </label>
+
+          <button
+            className={`btn-primary disabled:opacity-50 disabled:pointer-events-none`}
+            disabled={!isAcceptedRules || !isUnderstandPrizeEligibility}
+          >
+            Register
+          </button>
+        </form>
+      )}
     </div>
   );
 }
