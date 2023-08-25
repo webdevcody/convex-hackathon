@@ -67,9 +67,7 @@ export default function Participants() {
           height="315"
           src="https://www.youtube.com/embed/5cGdBDXqCJ0?si=SFJjznLZwBUpZrTQ"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
         ></iframe>
 
         <iframe
@@ -77,9 +75,7 @@ export default function Participants() {
           height="315"
           src="https://www.youtube.com/embed/4DEFIEHbC_s?si=vcoB9wI8EK6B8ijQ"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
         ></iframe>
       </div>
     </div>
