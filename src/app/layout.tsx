@@ -58,12 +58,14 @@ const Header = () => {
           </Link>
         </div>
 
-        <Link
-          href="/submit"
-          className="hover:text-gray-200 text-xs hidden md:block"
-        >
-          <button className="btn-primary">SUBMIT</button>
-        </Link>
+        {session.isAuthenticated && (
+          <Link
+            href="/submit"
+            className="hover:text-gray-200 text-xs hidden md:block"
+          >
+            <button className="btn-primary">SUBMIT</button>
+          </Link>
+        )}
 
         <div className="hidden md:block">
           {session.isAuthenticated ? (
@@ -106,16 +108,17 @@ const Header = () => {
             SUBMISSIONS
           </Link>
 
-          <Link href="/submit" className="hover:text-gray-200 text-xs">
-            <button className="btn-primary">SUBMIT</button>
-          </Link>
-
           {session.isAuthenticated ? (
-            <SignOutButton>
-              <button className="btn bg-gray-100 text-black py-2 px-4 hover:bg-gray-200 rounded">
-                Sign Out
-              </button>
-            </SignOutButton>
+            <>
+              <Link href="/submit" className="hover:text-gray-200 text-xs">
+                <button className="btn-primary">SUBMIT</button>
+              </Link>
+              <SignOutButton>
+                <button className="btn bg-gray-100 text-black py-2 px-4 hover:bg-gray-200 rounded">
+                  Sign Out
+                </button>
+              </SignOutButton>
+            </>
           ) : (
             <SignInButton mode="modal">
               <button className="btn bg-gray-100 text-black py-2 px-4 hover:bg-gray-200 rounded">

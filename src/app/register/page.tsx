@@ -3,6 +3,8 @@
 import { useMutation, useQuery } from "convex/react";
 import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
+import { mainCategories, subCategories } from "@/data";
+import { CategoryCard } from "../category-card";
 
 function Rules() {
   return (
@@ -19,16 +21,16 @@ function Rules() {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">1. Dates and Timing</h2>
       <p className="mb-4">
-        Submission Period: September 6th, 2023 (12:00 am Eastern Time) –
-        September 20th, 2023 (11:59 pm Eastern Time) (“Submission Period”).
+        Submission Period: September 6th, 2023 (9:00 am Eastern Time) –
+        September 20th, 2023 (9:00 am Eastern Time) (“Submission Period”).
       </p>
       <p className="mb-4">
-        Judging Period: September 21, 2023 (12:00 am Eastern Time) – September
-        27, 2023 (11:59 pm Eastern Time) (“Judging Period”).
+        Judging Period: September 20, 2023 (9:01 am Eastern Time) – September
+        27, 2023 (9:00 am Eastern Time) (“Judging Period”).
       </p>
       <p className="mb-4">
-        Public Voting Period: September 21, 2023 (12:00 am Eastern Time) –
-        September 27, 2023 (11:59 pm Eastern Time) (“Public Voting Period”).
+        Public Voting Period: September 20, 2023 (9:01 am Eastern Time) –
+        September 27, 2023 (9:00 am Eastern Time) (“Public Voting Period”).
       </p>
       <p className="mb-6">
         Winners Announced: On or around September 28, 2023 (12:00 pm Eastern
@@ -121,21 +123,33 @@ function Rules() {
         the register button
       </p>
 
+      <h2 className="mt-12 text-2xl font-semibold mb-4">7. Judging</h2>
+      <p>
+        Judging will be subjective. There is no formal checklist of things that
+        will make your submission better than others. The more polished and
+        feature rich your application is, the better I may rank it. If you
+        submit an application that has zero styling or looks buggy, it will
+        probably rank bad compared to other applications that look like a decent
+        amount of effort went into the submission.
+      </p>
+
       <h2 className="mt-12 text-2xl font-semibold mb-4">
-        7. Project Requirements
+        8. Project Requirements
       </h2>
       <p>
         Entrants must create a functioning web application utilizing Convex.
         Your application MUST at least use Convex&apos;s queries, mutations, and
-        database. Convex has other features (such as file storage) which are not
-        required for this hackathon submission, but failure to use the specified
-        features of Convex will result in a disqualification. You can use any
-        programming languages or framework you want as long as it integrates
-        with Convex, and authentication / authorization is optional.
+        database. Failure to use the specified features of Convex will result in
+        a disqualification. Convex has other features (such as file storage)
+        which are not required for this hackathon submission, but might make
+        your submissions look better. You can use any programming languages or
+        framework you want as long as it integrates with Convex, and
+        authentication / authorization is optional, but might be useful when
+        trying to win in the collaborative category.
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold mb-4">
-        8. Submission Requirements
+        9. Submission Requirements
       </h2>
 
       <p>
@@ -172,7 +186,36 @@ function Rules() {
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold mb-4">
-        9. Intellectual Property Rights
+        10. Prize Categories
+      </h2>
+      <p className="mb-8">
+        An Entrant&apos;s submission can only win one prize. When working on
+        your project, please be sure to keep these prize categories in mind to
+        increase your chances of winning.{" "}
+      </p>
+
+      <h3 className="text-3xl font-semibold text-center mb-12">
+        Main Categories 🥇
+      </h3>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        {mainCategories.map((category, index) => (
+          <CategoryCard category={category} key={index} />
+        ))}
+      </div>
+
+      <h3 className="text-3xl text-white font-semibold text-center mb-12">
+        Secondary Categories 🥈
+      </h3>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+        {subCategories.map((category, index) => (
+          <CategoryCard category={category} key={index} />
+        ))}
+      </div>
+
+      <h2 className="mt-12 text-2xl font-semibold mb-4">
+        11. Intellectual Property Rights
       </h2>
       <p>
         All submissions remain the intellectual property of the individuals or
@@ -199,7 +242,7 @@ function Rules() {
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold mb-4">
-        10. Prize Stipulations and Financial Responsibilities
+        12. Prize Stipulations and Financial Responsibilities
       </h2>
 
       <p className="mb-6">An Entrant can win a maximum of one prize.</p>
@@ -257,7 +300,7 @@ function Rules() {
         winner’s jurisdiction.
       </p>
       <h2 className="mt-12 text-2xl font-semibold mb-4">
-        11. Entry Conditions and Release
+        13. Entry Conditions and Release
       </h2>
       <p className="mb-4">
         By entering the Hackathon, you (and, if you are entering on behalf of a
@@ -337,7 +380,7 @@ function Rules() {
         sole discretion of the Sponsor.
       </p>
 
-      <h2 className="mt-12 text-2xl font-semibold mb-4">12. Publicity</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">14. Publicity</h2>
       <p>
         By participating in the Hackathon, Entrant consents to the promotion and
         display of the Entrant’s Submission, and to the use of the personal data
@@ -351,7 +394,7 @@ function Rules() {
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold mb-4">
-        13. Limitations of Liability.
+        15. Limitations of Liability.
       </h2>
       <p>
         By entering, all Entrants (including, in the case of a Team or
@@ -363,7 +406,7 @@ function Rules() {
         where such limitation is not legal.
       </p>
 
-      <h2 className="mt-12 text-2xl font-semibold mb-4">14. Disputes</h2>
+      <h2 className="mt-12 text-2xl font-semibold mb-4">16. Disputes</h2>
       <p className="mb-4">
         Except where prohibited by law, as a condition of participating in this
         Hackathon, Entrant agrees that:
@@ -407,7 +450,7 @@ function Rules() {
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold mb-4">
-        15. General Conditions
+        17. General Conditions
       </h2>
 
       <ul className="list-disc pl-6 mb-6">

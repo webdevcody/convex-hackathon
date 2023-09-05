@@ -47,11 +47,11 @@ export default function Participants() {
         </a>
       </p>
 
-      <p>
+      <p className="mb-4">
         Convex also provide a lot of templates you can start with if you want to
         speed up the process of having a working project from the{" "}
         <a
-          href=" https://www.convex.dev/templates"
+          href="https://www.convex.dev/templates"
           target="_blank"
           className="mb-8 link"
         >
@@ -59,9 +59,36 @@ export default function Participants() {
         </a>
       </p>
 
+      <p>
+        Convex created a dedicated page for any hackathon participants to help
+        learn convex, be sure to check it out!{" "}
+        <a
+          href="https://www.convex.dev/hackathon"
+          target="_blank"
+          className="mb-8 link"
+        >
+          https://www.convex.dev/hackathon
+        </a>
+      </p>
+
       <h2 className="text-4xl mb-4 mt-12">Useful Video Tutorials</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/vaQZYRSiimI?si=3vMoVxpfFcd5cGib"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        ></iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/cminnoNmZWY?si=kvEfZ_RlRNWrB0BC"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        ></iframe>
+
         <iframe
           width="100%"
           height="315"

@@ -1,9 +1,11 @@
 "use client";
 
+import { mainCategories, subCategories } from "@/data";
 import { SignInButton, SignOutButton } from "@clerk/clerk-react";
 import { useConvexAuth, useMutation } from "convex/react";
 import Image from "next/image";
 import Link from "next/link";
+import { CategoryCard } from "./category-card";
 
 const Hero = () => {
   const session = useConvexAuth();
@@ -78,7 +80,7 @@ const Convex = () => {
             >
               Convex
             </a>{" "}
-            who has given me this oppurtunity.
+            who has given me this opportunity.
             <br />
             <br />
             I&apos;ve used Convex on a few side projects and a sponsored video,
@@ -104,8 +106,8 @@ const Convex = () => {
 
 function HowItWorks() {
   const steps = [
-    "Register and agree to the rules on this site.",
-    "Build any web application using Convex.",
+    "Register and agree to the rules of the hackathon.",
+    "Build a web application using Convex.",
     "Submit a short video demonstration of your project",
     "Your submission will be judged and awards given",
   ];
@@ -135,66 +137,6 @@ function HowItWorks() {
 }
 
 function PrizeCategories() {
-  const mainCategories = [
-    {
-      title: "Most Creative use of AI",
-      prizes: [500, 300, 150],
-      description:
-        "The theme is AI, so the more creativity you bring to the playing field, the more money you may win.",
-    },
-    {
-      title: "Most Interactive",
-      prizes: [500, 300, 150],
-      description:
-        "Convex is built around interactivity and live updates.  The more your app supports multiple people editing the same data, the better.",
-    },
-  ];
-
-  const subCategories = [
-    {
-      title: "Best Design & UX",
-      prizes: [100, 50, 50],
-      description:
-        "So you're better at design?  We'll give you a chance as well.  Make your app look slick and you'll have a good chance to win.",
-    },
-    {
-      title: "Honorable Mention",
-      description:
-        "If you fail in all other categories, you may still have a chance.  If I think your application was still cool and worth mentioning, you could place here",
-      prizes: [100, 50, 50],
-    },
-    {
-      title: "Top Rated by Public",
-      description:
-        "What's a hackathon if the public can't vote on the winners?  After submission period, all entrants can vote on their top 3 favorite projects",
-      prizes: [100, 50, 50],
-    },
-  ];
-
-  function idxToString(idx: number) {
-    return ["1st", "2nd", "3rd"][idx];
-  }
-
-  function CategoryCard({
-    category,
-  }: {
-    category: { prizes: number[]; title: string; description: string };
-  }) {
-    return (
-      <div className="bg-gray-700 p-4 rounded-lg text-white">
-        <h2 className="text-lg font-semibold mb-2">{category.title}</h2>
-        <p className="text-gray-300">{category.description}</p>
-        <div className="text-gray-300 mt-4">
-          {category.prizes?.map((amount, idx) => (
-            <div key={idx}>
-              {idxToString(idx)}: ${amount}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="px-12 w-full bg-gradient-to-b from-gray-300 to-gray-200 md:py-32 py-16 flex flex-col justify-center items-center">
       <div className="mx-auto max-w-4xl">
@@ -222,11 +164,19 @@ function PrizeCategories() {
           Secondary Categories 🥈
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
           {subCategories.map((category, index) => (
             <CategoryCard category={category} key={index} />
           ))}
         </div>
+
+        <p className=" mx-auto text-2xl">
+          Judging will be subjective. The more polished and feature rich your
+          application is, the better I may rank it. If you submit an application
+          that has zero styling or is buggy, it will probably rank bad compared
+          to other applications that look like a decent amount of effort went
+          into the submission.
+        </p>
       </div>
     </div>
   );

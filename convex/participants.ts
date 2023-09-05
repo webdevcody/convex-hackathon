@@ -1,7 +1,7 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
-const INITIAL_VOTES = 1;
+const INITIAL_VOTES = 3;
 
 export const register = mutation({
   args: {},
