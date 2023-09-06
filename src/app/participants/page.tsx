@@ -17,7 +17,7 @@ export default function Participants() {
         Everyone who has registered into the hackathon is listed below
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
         {participants?.map((participant) => (
           <div key={participant.name} className="flex gap-4 items-center">
             {participant.image && (

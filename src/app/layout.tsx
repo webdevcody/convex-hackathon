@@ -3,7 +3,7 @@
 import "src/styles/globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { useState, type ReactNode } from "react";
-import { ConvexReactClient, useConvexAuth } from "convex/react";
+import { ConvexReactClient, useConvexAuth, useQuery } from "convex/react";
 import {
   ClerkProvider,
   SignInButton,
@@ -14,11 +14,21 @@ import { ConvexProviderWithClerk } from "convex/react-clerk";
 import Link from "next/link";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { api } from "../../convex/_generated/api";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 const Header = () => {
   const session = useConvexAuth();
+  const info = useQuery(api.participants.getRegistrationInfo);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -69,11 +79,23 @@ const Header = () => {
 
         <div className="hidden md:block">
           {session.isAuthenticated ? (
-            <SignOutButton>
-              <button className="btn bg-gray-100 text-black py-2 px-4 hover:bg-gray-200 rounded">
-                Sign Out
-              </button>
-            </SignOutButton>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar>
+                  <AvatarImage src={info?.image} />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem asChild>
+                  <Link href="/profile">Edit Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <SignOutButton>Sign Out</SignOutButton>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <SignInButton mode="modal">
               <button className="btn bg-gray-100 text-black py-2 px-4 hover:bg-gray-200 rounded">

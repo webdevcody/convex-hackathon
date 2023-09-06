@@ -2,6 +2,7 @@ import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 const INITIAL_VOTES = 3;
+const VOTING_ENABLED = false;
 
 export const register = mutation({
   args: {},
@@ -68,6 +69,32 @@ export const submitProject = mutation({
     });
 
     return participant;
+  },
+});
+
+export const updateName = mutation({
+  args: {
+    name: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      return null;
+    }
+
+    const user = await ctx.db
+      .query("participants")
+      .filter((q) => q.eq(q.field("userId"), identity.subject))
+      .first();
+
+    if (!user) {
+      throw new Error("you must register to update your info");
+    }
+
+    await ctx.db.patch(user._id, {
+      name: args.name,
+    });
   },
 });
 
@@ -149,6 +176,10 @@ export const vote = mutation({
     participantId: v.id("participants"),
   },
   handler: async (ctx, args) => {
+    if (!VOTING_ENABLED) {
+      throw new Error("this is disabled until after submission period");
+    }
+
     const identity = await ctx.auth.getUserIdentity();
 
     if (!identity) {
