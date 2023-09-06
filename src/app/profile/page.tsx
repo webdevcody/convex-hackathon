@@ -65,7 +65,7 @@ export default function Profile() {
               })
             }
             className="text-black mt-1 p-2 w-full rounded-md border border-gray-300"
-            placeholder="Enter your email we can contact you with"
+            placeholder="Enter your Display Name"
             required
           />
         </div>

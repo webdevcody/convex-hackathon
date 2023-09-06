@@ -1,5 +1,6 @@
 "use client";
 
+import { DateTime, Settings } from "luxon";
 import "src/styles/globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { useState, type ReactNode } from "react";
@@ -26,6 +27,15 @@ import { api } from "../../convex/_generated/api";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
+function getHoursLeft() {
+  Settings.defaultZone = "America/New_York";
+  const targetDate = DateTime.fromISO("2023-09-20T09:00:00");
+  const currentDate = DateTime.now();
+  const diff = targetDate.diff(currentDate, "hours");
+  const { hours } = diff;
+  return `${Math.floor(hours / 24)} days, ${Math.floor(hours % 24)} hours`;
+}
+
 const Header = () => {
   const session = useConvexAuth();
   const info = useQuery(api.participants.getRegistrationInfo);
@@ -33,6 +43,10 @@ const Header = () => {
 
   return (
     <>
+      <div className="bg-yellow-300 text-black h-12 flex justify-center items-center">
+        We are currently in the Submission Period. {getHoursLeft()} remaining.
+        Submission ends Sept 20th, 9:00am est.
+      </div>
       <header className="bg-gray-900 py-4 px-8 flex justify-between items-center">
         <div className="text-white text-lg font-semibold">
           <Link href="/" className="flex gap-2 items-center">

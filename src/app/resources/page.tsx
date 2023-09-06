@@ -75,14 +75,14 @@ export default function Participants() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <iframe
-          width="560"
+          width="100%"
           height="315"
           src="https://www.youtube.com/embed/vaQZYRSiimI?si=3vMoVxpfFcd5cGib"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         ></iframe>
         <iframe
-          width="560"
+          width="100%"
           height="315"
           src="https://www.youtube.com/embed/cminnoNmZWY?si=kvEfZ_RlRNWrB0BC"
           title="YouTube video player"
