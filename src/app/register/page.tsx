@@ -1,10 +1,11 @@
 "use client";
 
-import { useMutation, useQuery } from "convex/react";
+import { useConvexAuth, useMutation, useQuery } from "convex/react";
 import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
 import { mainCategories, subCategories } from "@/data";
 import { CategoryCard } from "../category-card";
+import { SignInButton } from "@clerk/clerk-react";
 
 function Rules() {
   return (
@@ -536,6 +537,7 @@ export default function Register() {
     useState(false);
   const register = useMutation(api.participants.register);
   const registrationInfo = useQuery(api.participants.getRegistrationInfo);
+  const session = useConvexAuth();
 
   useEffect(() => {
     if (registrationInfo) {
@@ -561,7 +563,7 @@ export default function Register() {
           Thank you for registering, we&apos;re looking forward to seeing your
           submission
         </div>
-      ) : (
+      ) : session.isAuthenticated ? (
         <form
           className="mb-24"
           onSubmit={async (e) => {
@@ -597,6 +599,12 @@ export default function Register() {
             Register
           </button>
         </form>
+      ) : (
+        <SignInButton mode="modal">
+          <button className="btn-primary mt-12 mb-24">
+            Sign In to Register
+          </button>
+        </SignInButton>
       )}
     </div>
   );
