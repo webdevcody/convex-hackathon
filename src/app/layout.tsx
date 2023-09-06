@@ -132,6 +132,9 @@ const Header = () => {
 
           {session.isAuthenticated ? (
             <>
+              <Link href="/profile" className="hover:text-gray-200">
+                PROFILE
+              </Link>
               <Link href="/submit" className="hover:text-gray-200 text-xs">
                 <button className="btn-primary">SUBMIT</button>
               </Link>
