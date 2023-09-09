@@ -78,7 +78,7 @@ export default function Submit() {
       >
         <div className="my-4">
           <label htmlFor="contactEmail" className="block text-lg font-medium">
-            Contact Email:
+            Contact Email (Or Team Representative):
           </label>
           <input
             type="email"
@@ -141,7 +141,7 @@ export default function Submit() {
 
         <div className="my-4">
           <label htmlFor="payPalMeUrl" className="block text-lg font-medium">
-            PayPal.Me URL:
+            PayPal.Me (Individual or Team Representative) URL:
           </label>
           <input
             type="url"

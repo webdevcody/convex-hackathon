@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-yellow-300 text-black h-12 flex justify-center items-center">
+      <div className="bg-yellow-300 text-black min-h-12 p-2 text-center flex justify-center items-center">
         We are currently in the Submission Period. {getHoursLeft()} remaining.
         Submission ends Sept 20th, 9:00am est.
       </div>
