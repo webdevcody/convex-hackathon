@@ -160,7 +160,7 @@ function Rules() {
       <ul className="list-disc pl-6 mb-6">
         <li>
           A video demonstration of your project
-          <ul>
+          <ul className="list-disc pl-6 mb-6">
             <li>should be less than three (3) minutes</li>
             <li>
               must be uploaded to and made publicly visible on YouTube, Vimeo,
@@ -172,11 +172,17 @@ function Rules() {
               other material unless the Entrant has permission to use such
               material.
             </li>
+            <li>Please upload URL during submission period</li>
           </ul>
         </li>
         <li>
-          URL to a functional demo app OR URL to code repository (public or
-          private)
+          URL to github code repository (public or private).
+          <ul className="list-disc pl-6 mb-6">
+            <li>
+              If your repo is private, please send an invite to{" "}
+              <b>webdevcody</b> so I can verify convex was used in this app.
+            </li>
+          </ul>
         </li>
       </ul>
       <p>
