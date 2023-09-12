@@ -120,7 +120,9 @@ export default function Submit() {
 
         <div className="my-4">
           <label htmlFor="githubUrl" className="block text-lg font-medium">
-            GitHub URL:
+            GitHub URL
+            <br />
+            (send repo invites to webdevcody if repo is private):
           </label>
           <input
             type="url"
