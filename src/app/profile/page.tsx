@@ -3,8 +3,8 @@
 import { useConvexAuth, useMutation, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useEffect, useState } from "react";
-import { SuccessAlert } from "@/components/success-alert";
 import { useRouter } from "next/navigation";
+import { Alert } from "@/components/alert";
 
 export default function Profile() {
   const info = useQuery(api.participants.getRegistrationInfo);
@@ -30,9 +30,9 @@ export default function Profile() {
   return (
     <div className="min-h-screen container mx-auto p-6 flex flex-col text-white">
       {isSuccess && (
-        <SuccessAlert onClose={() => setIsSuccess(false)}>
+        <Alert variant="success" onClose={() => setIsSuccess(false)}>
           Successfully updated!
-        </SuccessAlert>
+        </Alert>
       )}
 
       <h1 className="text-4xl font-bold mb-4 mt-8">Update your Info</h1>

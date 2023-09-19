@@ -1,5 +1,5 @@
 import { mutation, query } from "./_generated/server";
-import { v } from "convex/values";
+import { v, ConvexError } from "convex/values";
 
 const INITIAL_VOTES = 3;
 const VOTING_ENABLED = false;
@@ -7,10 +7,13 @@ const VOTING_ENABLED = false;
 export const register = mutation({
   args: {},
   handler: async (ctx) => {
+    // TODO: uncomment when submission period is over
+    // throw new ConvexError("submission period is over");
+
     const identity = await ctx.auth.getUserIdentity();
 
     if (!identity) {
-      throw new Error("you must login to register");
+      throw new ConvexError("you must login to register");
     }
 
     const user = await ctx.db
@@ -47,10 +50,13 @@ export const submitProject = mutation({
     contactEmail: v.string(),
   },
   handler: async (ctx, args) => {
+    // TODO: uncomment after submission period is over
+    // throw new ConvexError("submission period has ended");
+
     const identity = await ctx.auth.getUserIdentity();
 
     if (!identity) {
-      throw new Error("you must login to register");
+      throw new ConvexError("you must login to register");
     }
 
     const user = await ctx.db
@@ -59,7 +65,7 @@ export const submitProject = mutation({
       .first();
 
     if (!user) {
-      throw new Error(
+      throw new ConvexError(
         "you must register and agree to the rules before you can submit"
       );
     }
@@ -89,7 +95,7 @@ export const updateName = mutation({
       .first();
 
     if (!user) {
-      throw new Error("you must register to update your info");
+      throw new ConvexError("you must register to update your info");
     }
 
     await ctx.db.patch(user._id, {
@@ -176,14 +182,15 @@ export const vote = mutation({
     participantId: v.id("participants"),
   },
   handler: async (ctx, args) => {
+    // TODO: remove this line to enable voting
     if (!VOTING_ENABLED) {
-      throw new Error("this is disabled until after submission period");
+      throw new ConvexError("Voting is disabled until after submission period");
     }
 
     const identity = await ctx.auth.getUserIdentity();
 
     if (!identity) {
-      throw new Error("you must login to register");
+      throw new ConvexError("You must login to vote");
     }
 
     const user = await ctx.db
@@ -192,19 +199,28 @@ export const vote = mutation({
       .first();
 
     if (!user) {
-      throw new Error(
-        "you must register and agree to the rules before you can vote"
+      throw new ConvexError(
+        "You must register and agree to the rules before you can vote"
       );
     }
 
     const submission = await ctx.db.get(args.participantId);
 
     if (!submission) {
-      throw new Error("invalid submission id");
+      throw new ConvexError("invalid submission id");
     }
 
     if (submission._id === user._id) {
-      throw new Error("you can not vote for your own");
+      throw new ConvexError("You can not vote for your own");
+    }
+
+    if (
+      !submission.payPalMeUrl ||
+      !submission.githubUrl ||
+      !submission.contactEmail ||
+      !submission.videoUrl
+    ) {
+      throw new ConvexError("You must submit a project in order to vote");
     }
 
     if (submission.voteIds.includes(user._id)) {
@@ -217,7 +233,7 @@ export const vote = mutation({
       });
     } else {
       if (user.votes <= 0) {
-        throw new Error("out of votes");
+        throw new ConvexError("out of votes");
       }
 
       await ctx.db.patch(user._id, {

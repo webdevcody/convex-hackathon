@@ -3,7 +3,7 @@
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useEffect, useState } from "react";
-import { SuccessAlert } from "@/components/success-alert";
+import { Alert } from "@/components/alert";
 
 const defaultFormState = {
   videoUrl: "",
@@ -31,9 +31,9 @@ export default function Submit() {
   return (
     <div className="min-h-screen container mx-auto p-6 flex flex-col text-white">
       {isSuccess && (
-        <SuccessAlert onClose={() => setIsSuccess(false)}>
+        <Alert variant="success" onClose={() => setIsSuccess(false)}>
           Successfully updated your submission!
-        </SuccessAlert>
+        </Alert>
       )}
 
       <h1 className="text-4xl font-bold mb-4 mt-8">Submit Your Project</h1>

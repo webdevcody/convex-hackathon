@@ -564,6 +564,7 @@ export default function Register() {
 
       <Rules />
 
+      {/* TODO: comment out the below after registration is over */}
       {registrationInfo ? (
         <div className="mb-12 mt-12 text-3xl">
           Thank you for registering, we&apos;re looking forward to seeing your
