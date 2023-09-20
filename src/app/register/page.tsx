@@ -161,7 +161,7 @@ function Rules() {
         <li>
           A video demonstration of your project
           <ul className="list-disc pl-6 mb-6">
-            <li>should be less than three (3) minutes</li>
+            <li>should be less than three (3) minutes.</li>
             <li>
               must be uploaded to and made publicly visible on YouTube, Vimeo,
               Facebook Video, or Youku, and a link to the video must be provided
