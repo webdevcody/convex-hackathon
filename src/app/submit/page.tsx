@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useEffect, useState } from "react";
 import { Alert } from "@/components/alert";
+import { parseApiError } from "@/util/parseApiError";
 
 const defaultFormState = {
   videoUrl: "",
@@ -65,14 +66,7 @@ export default function Submit() {
             });
             setIsSuccess(true);
           } catch (err) {
-            const error = err as Error;
-            if (error.message.includes("agree to the rules")) {
-              setError(
-                "Submission rejected - please register and agree to the rules before trying to submit"
-              );
-            } else {
-              setError(error.message);
-            }
+            setError(parseApiError(err));
           }
         }}
       >

@@ -7,13 +7,7 @@ import { AiFillGithub, AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BiSolidVideos } from "react-icons/bi";
 import { useState } from "react";
 import { Alert } from "@/components/alert";
-import { ConvexError } from "convex/values";
-
-function parseApiError(error: unknown) {
-  return error instanceof ConvexError
-    ? (error.data as string)
-    : "Unexpected error occurred";
-}
+import { parseApiError } from "@/util/parseApiError";
 
 export default function Participants() {
   const submissions = useQuery(api.participants.getSubmissions);
