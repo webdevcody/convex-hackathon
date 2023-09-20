@@ -14,6 +14,7 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as csv from "../csv";
 import type * as participants from "../participants";
 
 /**
@@ -25,6 +26,7 @@ import type * as participants from "../participants";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  csv: typeof csv;
   participants: typeof participants;
 }>;
 export declare const api: FilterApi<
