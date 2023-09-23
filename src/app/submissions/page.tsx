@@ -8,6 +8,7 @@ import { BiSolidVideos } from "react-icons/bi";
 import { useState } from "react";
 import { Alert } from "@/components/alert";
 import { parseApiError } from "@/util/parseApiError";
+import { getYoutubeThumbnailUrl } from "@/util/youtube";
 
 export default function Participants() {
   const submissions = useQuery(api.participants.getSubmissions);
@@ -27,7 +28,15 @@ export default function Participants() {
         Submissions {submissions && <>({submissions?.length})</>}
       </h1>
 
-      <p className="mb-8">All submissions are listed below</p>
+      {!user ? (
+        <p className="mb-8">Checkout the submissions below!</p>
+      ) : user.votes > 0 ? (
+        <p className="mb-8">
+          Please vote on submissions below ({user.votes} votes remaining)
+        </p>
+      ) : (
+        <p className="mb-8">Thanks for voting</p>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {submissions?.map((submission) => (
@@ -47,6 +56,18 @@ export default function Participants() {
               )}
               {submission.name}
             </div>
+
+            {submission.videoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                alt={`submission for ${submission.name}`}
+                src={
+                  submission.thumbnailUrl
+                    ? submission.thumbnailUrl
+                    : getYoutubeThumbnailUrl(submission.videoUrl)
+                }
+              />
+            )}
 
             <a
               className="text-blue-500 hover:text-blue-600 flex items-center gap-3 break-all"
@@ -87,7 +108,7 @@ export default function Participants() {
                 )}
               </button>
             )}
-            <div className="">{submission.voteIds.length} Vote(s)</div>
+            {/* <div className="">{submission.voteIds.length} Vote(s)</div> */}
           </div>
         ))}
       </div>

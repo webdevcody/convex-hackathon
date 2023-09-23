@@ -52,7 +52,11 @@ export default function Submit() {
 
       <h1 className="text-4xl font-bold mb-4 mt-8">Submit Your Project</h1>
 
-      {user.isAuthenticated ? (
+      <div className="mb-4">
+        Sorry, submission period is over. All submissions are currently being
+        judged.
+      </div>
+      {/* {user.isAuthenticated ? (
         submission ? (
           <div>
             <p>
@@ -212,7 +216,7 @@ export default function Submit() {
             </button>
           </SignInButton>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

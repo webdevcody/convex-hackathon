@@ -36,6 +36,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-markdown": "^8.0.7",
+    "seedrandom": "^3.0.5",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
@@ -44,6 +45,8 @@
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/luxon": "^3.3.2",
+    "@types/seedrandom": "^3.0.5",
+    "@types/shuffle-seed": "^1.1.0",
     "aws-cdk-lib": "2.91.0",
     "constructs": "10.2.69",
     "sst": "^2.24.12"

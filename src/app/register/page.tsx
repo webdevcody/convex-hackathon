@@ -565,12 +565,13 @@ export default function Register() {
       <Rules />
 
       {/* TODO: comment out the below after registration is over */}
-      {registrationInfo ? (
+      {registrationInfo && (
         <div className="mb-12 mt-12 text-3xl">
           Thank you for registering, we&apos;re looking forward to seeing your
           submission
         </div>
-      ) : session.isAuthenticated ? (
+      )}
+      {/* : session.isAuthenticated ? (
         <form
           className="mb-24"
           onSubmit={async (e) => {
@@ -612,7 +613,7 @@ export default function Register() {
             Sign In to Register
           </button>
         </SignInButton>
-      )}
+      )} */}
     </div>
   );
 }

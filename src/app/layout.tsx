@@ -29,7 +29,7 @@ const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 function getHoursLeft() {
   Settings.defaultZone = "America/New_York";
-  const targetDate = DateTime.fromISO("2023-09-20T09:00:00");
+  const targetDate = DateTime.fromISO("2023-09-27T09:00:00");
   const currentDate = DateTime.now();
   const diff = targetDate.diff(currentDate, "hours");
   const { hours } = diff;
@@ -43,9 +43,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-yellow-300 text-black min-h-12 p-2 text-center flex justify-center items-center">
-        We are currently in the Submission Period. {getHoursLeft()} remaining.
-        Submission ends Sept 20th, 9:00am est.
+      <div className="bg-red-300 text-black min-h-12 p-2 text-center flex justify-center items-center">
+        We are currently in the Voting / Juding Period. {getHoursLeft()}{" "}
+        remaining. Judging ends Sept 27th, 9:00am est.
       </div>
       <header className="bg-gray-900 py-4 px-8 flex justify-between items-center">
         <div className="text-white text-lg font-semibold">

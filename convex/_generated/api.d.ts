@@ -15,6 +15,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as csv from "../csv";
+import type * as giveVotes from "../giveVotes";
 import type * as participants from "../participants";
 
 /**
@@ -27,6 +28,7 @@ import type * as participants from "../participants";
  */
 declare const fullApi: ApiFromModules<{
   csv: typeof csv;
+  giveVotes: typeof giveVotes;
   participants: typeof participants;
 }>;
 export declare const api: FilterApi<
