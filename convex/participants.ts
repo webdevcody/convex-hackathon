@@ -6,7 +6,7 @@ import { DataModel } from "./_generated/dataModel";
 import seedrandom from "seedrandom";
 
 const INITIAL_VOTES = 3;
-const VOTING_ENABLED = true;
+const VOTING_ENABLED = false;
 
 function seededSortObjects(array: Record<string, any>, seed: string) {
   const rng = seedrandom(seed);

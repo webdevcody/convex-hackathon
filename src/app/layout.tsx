@@ -43,9 +43,8 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-red-300 text-black min-h-12 p-2 text-center flex justify-center items-center">
-        We are currently in the Voting / Juding Period. {getHoursLeft()}{" "}
-        remaining. Judging ends Sept 27th, 9:00am est.
+      <div className="bg-gray-300 text-black min-h-12 p-2 text-center flex justify-center items-center">
+        The Hackathon is officially over. Thanks for participating!
       </div>
       <header className="bg-gray-900 py-4 px-8 flex justify-between items-center">
         <div className="text-white text-lg font-semibold">
@@ -68,8 +67,8 @@ const Header = () => {
         </div>
 
         <div className="text-white gap-4 lg:gap-8 text-xs hidden md:flex">
-          <Link href="/register" className="hover:text-gray-200">
-            REGISTER
+          <Link href="/winners" className="hover:text-gray-200">
+            WINNERS
           </Link>
           <Link href="/participants" className="hover:text-gray-200">
             PARTICIPANTS

@@ -16,6 +16,10 @@ export default function Participants() {
   const user = useQuery(api.participants.getRegistrationInfo);
   const [error, setError] = useState("");
 
+  const sortedSubmissions = submissions?.sort(
+    (a, b) => b.voteIds.length - a.voteIds.length
+  );
+
   return (
     <div className="min-h-screen container mx-auto p-6 flex flex-col text-white">
       {error && (
@@ -39,7 +43,7 @@ export default function Participants() {
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {submissions?.map((submission) => (
+        {sortedSubmissions?.map((submission) => (
           <div
             key={submission._id}
             className="flex flex-col gap-4 bg-gray-50 drop-shadow-xl rounded-xl p-12 text-black"
@@ -85,7 +89,7 @@ export default function Participants() {
               <AiFillGithub className="text-3xl" /> {submission.githubUrl}
             </a>
 
-            {user && (
+            {/* {user && (
               <button
                 className="flex gap-2 items-center"
                 onClick={async () => {
@@ -107,8 +111,9 @@ export default function Participants() {
                   </>
                 )}
               </button>
-            )}
-            {/* <div className="">{submission.voteIds.length} Vote(s)</div> */}
+            )} */}
+
+            <div className="">{submission.voteIds.length} Vote(s)</div>
           </div>
         ))}
       </div>
